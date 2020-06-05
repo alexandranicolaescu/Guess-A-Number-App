@@ -3,22 +3,29 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native';
 
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
+import Colors from '../constants/colors';
 
 const GameOverScreen = props => {
     return (
         <View style = {styles.screen} >
-            <BodyText> The Game is Over! </BodyText>
+            <TitleText> The Game is Over! </TitleText>
             <View style = {styles.imageContainer} >
                 <Image 
                     fadeDuration = {300}
-                    //source = {require('../assets/success.png')}           //local image
-                    source = {{uri: 'https://images.wallpaperscraft.com/image/mountains_night_northern_lights_148100_1440x900.jpg' }}             //web image
+                    source = {require('../assets/success.png')}           //local image
+                    //source = {{uri: 'https://images.wallpaperscraft.com/image/mountains_night_northern_lights_148100_1440x900.jpg' }}             //web image
                     style = {styles.image} 
                     resizeMode = "cover"
                 />
             </View>
-            <BodyText> Number of Rounds: {props.roundsNumber} </BodyText>
-            <BodyText> Number was: {props.userNumber} </BodyText>
+            <View style = {styles.resultContainer}>
+            <BodyText> 
+                Your phone needed 
+                <Text style = {styles.highlight}> {props.roundsNumber} </Text> 
+                rounds to guess the number 
+                <Text style = {styles.highlight}> {props.userNumber} </Text> 
+            </BodyText>
+            </View>
             <Button title = "NEW GAME" onPress = {props.onRestart} />
         </View>
     );
@@ -44,6 +51,14 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         overflow: 'hidden',
         marginVertical: 30
+    },
+
+    highlight: {
+        color:Colors.primary
+    },
+
+    resultContainer: {
+       width: '80%',
     }
 });
 
