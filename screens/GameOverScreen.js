@@ -28,7 +28,7 @@ const GameOverScreen = props => {
                 haha!
             </BodyText>
             </View>
-            <MainButton  onPress = {props.onRestart}>
+            <MainButton onPress = {props.onRestart}>
             NEW GAME
             </MainButton>
         </View>
