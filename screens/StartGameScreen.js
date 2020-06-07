@@ -6,7 +6,8 @@ import {
     Button, 
     TouchableWithoutFeedback, 
     Keyboard,
-    Alert 
+    Alert,
+    Dimensions 
 } from 'react-native';
 
 import Card from '../components/Card';
@@ -119,13 +120,15 @@ const styles = StyleSheet.create ({
     },
 
     inputContainer: {
-        width: 300,
-        maxWidth: '80%',
+        width: '80%',
+        //maxWidth: '80%',
+        minWidth: 300,               //lățimea minimă și maximă stabilite ca să nu iasă container-ul în afara ecranului
+        maxWidth: '95%',
         alignItems: 'center',
     },
 
     button: {
-        width: 100,
+        width: Dimensions.get('window').width / 4           //window scoate din considerare bara de notificări a telefonului pe android
     },
 
     input: {
