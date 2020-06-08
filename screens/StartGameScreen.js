@@ -25,7 +25,7 @@ const StartGameScreen = props => {
     const [enteredValue, setEnteredValue] = useState('');
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState('');
-    const [buttonWidth, setButtonWodth] = useState(Dimensions.get('window').width / 4);
+    const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width / 4);
 
     const numberInputHandler = inputText => {
         setEnteredValue(inputText.replace(/[^0-9]/g, ''));
@@ -38,7 +38,7 @@ const StartGameScreen = props => {
 
     useEffect(() => {
         const updateLayout = () => {
-            setButtonWodth(Dimensions.get('window').width / 4);
+            setButtonWidth(Dimensions.get('window').width / 4);
         };
     
         Dimensions.addEventListener('change', updateLayout);

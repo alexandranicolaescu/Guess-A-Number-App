@@ -38,7 +38,7 @@ const GameOverScreen = props => {
                 </BodyText>
                 </View>
                 <MainButton onPress = {props.onRestart}>
-                NEW GAME
+                    NEW GAME
                 </MainButton>
             </View>
         </ScrollView>
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingVertical: 10
     },
 
     image: {
