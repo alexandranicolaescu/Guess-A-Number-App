@@ -6,7 +6,8 @@ import {
     Button, 
     Image, 
     Dimensions,
-    ScrollView 
+    ScrollView,
+    SafeAreaView 
 } from 'react-native';
 
 import BodyText from '../components/BodyText';
@@ -33,41 +34,43 @@ const GameOverScreen = props => {
     });
 
     return (
-        <ScrollView>
-            <View style = {styles.screen} >
-                <TitleText> The Game is Over! </TitleText>
-                <View style = {{...styles.imageContainer, ...{
-                    height: availableDeviceWidth * 0.7,
-                    width: availableDeviceWidth * 0.7,
-                    borderRadius: (availableDeviceWidth * 0.7) / 2,
-                    marginVertical: availableDeviceHeight / 30
-                }}} >
-                    <Image 
-                        fadeDuration = {300}
-                        source = {require('../assets/success.png')}           //local image
-                        //source = {{uri: 'https://images.wallpaperscraft.com/image/mountains_night_northern_lights_148100_1440x900.jpg' }}             //web image
-                        style = {styles.image} 
-                        resizeMode = "cover"
-                    />
+        
+            <ScrollView>
+                <View style = {styles.screen} >
+                    <TitleText> The Game is Over! </TitleText>
+                    <View style = {{...styles.imageContainer, ...{
+                        height: availableDeviceWidth * 0.7,
+                        width: availableDeviceWidth * 0.7,
+                        borderRadius: (availableDeviceWidth * 0.7) / 2,
+                        marginVertical: availableDeviceHeight / 30
+                    }}} >
+                        <Image 
+                            fadeDuration = {300}
+                            source = {require('../assets/success.png')}           //local image
+                            //source = {{uri: 'https://images.wallpaperscraft.com/image/mountains_night_northern_lights_148100_1440x900.jpg' }}             //web image
+                            style = {styles.image} 
+                            resizeMode = "cover"
+                        />
+                    </View>
+                    <View style = {{...styles.resultContainer, ...{
+                        marginVertical: availableDeviceHeight / 60
+                    }}}>
+                    <BodyText style = {{...styles.resultText, ...{
+                        fontSize: availableDeviceHeight < 400 ? 16 : 20
+                    }}}> 
+                        I only needed
+                        <Text style = {styles.highlight}> {props.roundsNumber} </Text> 
+                        rounds to guess the number
+                        <Text style = {styles.highlight}> {props.userNumber}, </Text> 
+                        haha!
+                    </BodyText>
+                    </View>
+                    <MainButton onPress = {props.onRestart}>
+                        NEW GAME
+                    </MainButton>
                 </View>
-                <View style = {{...styles.resultContainer, ...{
-                    marginVertical: availableDeviceHeight / 60
-                }}}>
-                <BodyText style = {{...styles.resultText, ...{
-                    fontSize: availableDeviceHeight < 400 ? 16 : 20
-                }}}> 
-                    I only needed
-                    <Text style = {styles.highlight}> {props.roundsNumber} </Text> 
-                    rounds to guess the number
-                    <Text style = {styles.highlight}> {props.userNumber}, </Text> 
-                    haha!
-                </BodyText>
-                </View>
-                <MainButton onPress = {props.onRestart}>
-                    NEW GAME
-                </MainButton>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        
     );
 };
 
